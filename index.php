@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+    <script src="js/jquery.growl.js" type="text/javascript"></script>
+    <link href="css/jquery.growl.css" rel="stylesheet" type="text/css" />
     <!--[if lt IE 9]>
         <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -53,7 +56,7 @@
             <div class="collapse navbar-collapse" id="primary_menu">
                 <ul class="nav navbar-nav mainmenu">
                     <li class="active"><a href="#home_page">Home</a></li>
-                    <li><a href="#about_page">Sobre nós</a></li>
+                    <li><a href="#about_page">Sobre</a></li>
                     <li><a href="#features_page">Funcionalidades</a></li>
                     <!-- <li><a href="#gallery_page">Galeria</a></li> -->
                     <li><a href="#download_area">Download</a></li>
@@ -350,11 +353,10 @@
                         <p>Compatível com diversos aparelhos com diferentes tamanhos. Perfeito para você usar no seu Tablet,
                             Smartphone ou Computador.</p>
                     </div>
-                    <div class="space-50"></div>
+                    <div class="space-50" id="download_area"></div>
                 </div>
             </div>
         </div>
-        <div id="download_area"></div>
     </section>
     <!-- How-To-Use-End -->
 
@@ -554,7 +556,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title text-center">
-                        <h5 class="title">Equipe Minder</h5>
+                        <h5 class="title">Quem Somos</h5>
                         <div class="space-60"></div>
                     </div>
                 </div>
@@ -601,11 +603,12 @@
                 </div>
             </div>
         </div>
+        <div id="subscribe_area"></div>
     </section>
     <!-- Testimonial-Area-End -->
 
     <!-- Subscribe-Form -->
-    <div class="space-100" id="subscribe_area"></div>
+    <div class="space-100"></div>
     <div class="subscribe-area section-padding">
         <div class="container">
             <div class="row">
@@ -619,11 +622,36 @@
                             <button class="bttn-white active" type="submit"><span class="lnr lnr-location"> Cadastrar</span></button>
                             <label class="mt10" for="mc-email"></label>
                         </form> -->
-                        <form action="enviaEmail.php" method="post">
+                        <?php
+                        if($_POST){
+                            $url  = 'http://localhost:9090/api/listaDeEspera';
+                            $data = $_REQUEST['email'];
+                            $ch   = curl_init();
+
+                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+                            curl_setopt($ch, CURLOPT_URL, $url);
+                            curl_setopt($ch, CURLOPT_POST, 1);
+                            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+                            if(curl_exec($ch)){
+                                ?>
+                                <script type="text/javascript">
+                                    $.growl.notice({ title: "E-mail enviado com sucesso!"});
+                                </script>
+                                <?php
+                            }else{
+                                ?>
+                                <script type="text/javascript">
+                                    $.growl.error({ title: "E-mail não enviado!"});
+                                </script>
+                                <?php
+                            }
+                            curl_close($ch);
+                        }
+                        ?>
+                        <form method="post">
                             <input type="email" class="control" name="email" placeholder="Digite seu email aqui" required="required">
-                            <button class="bttn-white active" type="submit" onclick="(function() {
-                                window.alert('Seu email foi enviado com sucesso. Agora você está na lista de espera, assim que o Minder for lançado nós avisamos você!');})()"><span
-                                    class="lnr lnr-location">
+                            <button class="bttn-white active" type="submit" class="lnr lnr-location">
                                     Cadastrar</span></button>
                         </form>
                     </div>
@@ -694,7 +722,7 @@
                         <div class="footer-menu ">
                             <ul>
                                 <li class="active "><a href="#home_page ">Home</a></li>
-                                <li><a href="#about_page ">Sobre nós</a></li>
+                                <li><a href="#about_page ">Sobre</a></li>
                                 <li><a href="#features_page ">Funcionalidades</a></li>
                                 <!-- <li><a href="#gallery_page ">Galeria</a></li>
                                 <li><a href="#price_page ">Preços</a></li> -->

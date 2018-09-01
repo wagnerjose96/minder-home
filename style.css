@@ -47,6 +47,32 @@ CSS INDEX
     outline: none;
 }
 
+/* The alert message box */
+.sucess {
+    padding: 10px;
+    background-color:  rgb(69, 214, 81); /* Red */
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
 a {
     text-decoration: none;
     outline: none;
@@ -439,7 +465,7 @@ input:-webkit-autofill:focus {
 /*-- 8. Progress-Area --*/
 
 .progress-area {
-    background-image: url('images/progress-bg.jpg');
+    background-image: url('images/presentation-person-looking-to-the-digital-tablet.jpg');
     background-repeat: no-repeat;
     background-position: right center;
     background-size: auto 100%;
