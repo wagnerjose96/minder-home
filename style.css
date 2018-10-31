@@ -1,38 +1,3 @@
-/*-----------------------------------------------------------------------------------
-Template Name: Appy HTML5 Template,
-Template URI: http://www.themectg.com
-Description: This is html5 template
-Author: Ashekur Rahman Hridoy
-Author URI: http://www.facebook.com/ashekur.rahman.hridoy
-Version: 1.0
------------------------------------------------------------------------------------
-CSS INDEX
-===================
-1. Google font
-2. Theme Default CSS
-3. Button-Style
-4. Helper-Classes
-5. MainMenu-Area
-6. Page-Title
-7. Home-Area
-8. Progress-Area
-9. Video-Area
-10. Feature-Area
-11. Service-Box
-12. Testimonial-Area
-13. Gallery-Area
-14. Download-Area
-15. Price-Area
-16. Questions-area
-17. Subscribe-Form
-18. Footer-Area
-19. ScrollUp-Button
-20. Blog-Post
-21. Pagination
-22. Comment-Respond
-23. Form-Stype
------------------------------------------------------------------------------------*/
-
 /*-----------------
 1. Google font
 ------------------*/
@@ -374,6 +339,18 @@ input:-webkit-autofill:focus {
     padding: 10px 40px;
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.medic-area .left-button a {
+    color: #ffffff;
+    padding: 10px 40px;
+    border-radius: 50px;
+    background-color: #5D8BDD;
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -875,6 +852,16 @@ input:-webkit-autofill:focus {
 /*-- 16. Questions-area --*/
 
 .questions-area {
+    background-color: #f5f6ff;
+}
+
+.toggole-boxs {
+    margin-top: -20px;
+}
+
+/*-- 17. Medic-area --*/
+
+.medic-area {
     background-color: #f5f6ff;
 }
 
